@@ -33,10 +33,12 @@
                     </DockPanel>
 
                 </materialDesign:ColorZone>
-                <materialDesign:Transitioner x:Name="Transitioner" SelectedIndex="1" Height="{Binding ActualHeight, ConverterParameter=-100, Converter={StaticResource MathConverter}, ElementName=Window, Mode=OneWay}" VerticalAlignment="Top">
+                <materialDesign:Transitioner x:Name="Transitioner" SelectedIndex="0" Height="{Binding ActualHeight, ConverterParameter=-100, Converter={StaticResource MathConverter}, ElementName=Window, Mode=OneWay}" VerticalAlignment="Top">
                     <pg:Main x:Name="main" Width="Auto" Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}"/>
                     <pg:LearningPage x:Name="learnPage" Width="Auto" Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}"/>
                     <pg:TestingPage x:Name="testPage" Width="Auto" Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}"/>
+                    <pg:HelpPage x:Name="helpPage" Width="Auto" Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}"/>
+                    <pg:AboutPage x:Name="aboutPage" Width="Auto" Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}"/>
                 </materialDesign:Transitioner>
             </StackPanel>
             <materialDesign:DrawerHost.LeftDrawerContent>

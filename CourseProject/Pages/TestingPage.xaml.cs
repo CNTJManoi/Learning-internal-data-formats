@@ -10,8 +10,8 @@ namespace CourseProject.Pages
     /// </summary>
     public partial class TestingPage : UserControl
     {
-        private readonly Random _r = new Random();
-        private readonly DispatcherTimer _timer;
+        private Random _r = new Random();
+        private DispatcherTimer _timer;
         private int intervalMin, intervalMax;
         private byte Mode;
         private string Number;
