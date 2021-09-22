@@ -288,8 +288,8 @@ namespace CourseProject.Pages
                 return;
             }
 
-            SixTeenBox.Text = answer[0].Remove(0, 1);
-            TwoBox.Text = answer[1].Remove(0, 1);
+            SixTeenBox.Text = answer[0].Trim();
+            TwoBox.Text = answer[1].Trim();
         }
     }
 }

@@ -7,7 +7,19 @@
         xmlns:local="clr-namespace:CourseProject.Pages"
         mc:Ignorable="d"
         Width="800" Height="550">
-    <Grid>
+    <materialDesign:DialogHost Name="dialog">
+        <materialDesign:DialogHost.DialogContent>
+            <StackPanel MaxWidth="350">
+                <TextBlock Name="dialogText" Margin="30,20,30,0" Style="{StaticResource MaterialDesignHeadline6TextBlock}" TextAlignment="Center" TextWrapping="Wrap">
+                </TextBlock>
+                <Button Grid.Row="0" Grid.Column="0"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Content="Хорошо" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="30,20,30,30" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" FontSize="16" />
+            </StackPanel>
+
+
+        </materialDesign:DialogHost.DialogContent>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -16,10 +28,14 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
+
         <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock Grid.Row="0" Grid.Column="0"
+                       Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
+                       Text="Результат можно вводить как в шестнадцатеричном так и в двоичном виде" TextWrapping="Wrap" TextAlignment="Center" FontSize="16" Margin="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="390" />
             <TextBlock
                 Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
-                Text="Выберите режим:" TextWrapping="Wrap" TextAlignment="Justify" Margin="10,47,0,0" FontSize="20" />
+                Text="Выберите режим:" TextWrapping="Wrap" TextAlignment="Justify" Margin="10,4,0,0" FontSize="20" />
             <ComboBox Name="ModeBox"
                       materialDesign:HintAssist.Hint="Режим"
                       Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Width="200" SelectionChanged="ModeBox_SelectionChanged">
@@ -56,13 +72,22 @@
             </WrapPanel>
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <WrapPanel Name="TimePanelClock" HorizontalAlignment="Right" VerticalAlignment="Center" Height="47" Opacity="0">
+            <WrapPanel Name="TimePanelClock" HorizontalAlignment="Right" VerticalAlignment="Center" Height="47" Opacity="1">
                 <TextBlock
                     Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
-                    Text="Время: " TextWrapping="Wrap" TextAlignment="Justify" Margin="10,10,0,0" FontSize="24" HorizontalAlignment="Right" />
-                <TextBlock
+                    Text="Очков: " TextWrapping="Wrap" TextAlignment="Justify" Margin="10,10,0,0" FontSize="24" HorizontalAlignment="Right" />
+                <TextBlock Name="ScoreBlock"
                     Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
-                    Text="00:00" TextWrapping="Wrap" TextAlignment="Justify" Margin="0,10,10,0" FontSize="24" HorizontalAlignment="Right" />
+                    Text="0" TextWrapping="Wrap" TextAlignment="Justify" Margin="0,10,10,0" FontSize="24" HorizontalAlignment="Right" />
+                <WrapPanel Name="TimeWindow" Opacity="0">
+                    <TextBlock
+                        Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
+                        Text="Время: " TextWrapping="Wrap" TextAlignment="Justify" Margin="10,10,0,0" FontSize="24" HorizontalAlignment="Right" />
+                    <TextBlock Name="TimeBlock"
+                               Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
+                               Text="00:00" TextWrapping="Wrap" TextAlignment="Justify" Margin="0,10,10,0" FontSize="24" HorizontalAlignment="Right" />
+                    </WrapPanel>
+                
             </WrapPanel>
             <TextBlock
                 Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
@@ -114,35 +139,40 @@
             </ComboBox>
         </StackPanel>
         <StackPanel Grid.ColumnSpan="2" VerticalAlignment="Bottom">
-            <TextBlock Grid.Row="0" Grid.Column="0"
-                       Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
-                       Text="Результат можно вводить как в шестнадцатеричном так и в двоичном виде" TextWrapping="Wrap" TextAlignment="Center" FontSize="16" Margin="10,0,10,10" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" />
-            <Button Grid.Row="0" Grid.Column="0"
+            <Button x:Name="BeginButton" Grid.Row="0" Grid.Column="0"
                     Style="{StaticResource MaterialDesignRaisedButton}"
-                    Content="Начать тестирование" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10" Click="Button_Click" />
+                    Content="Начать тестирование" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0" Click="Button_Click" />
+            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Grid.Row="0" Grid.Column="0"
+                           Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
+                           Text="Значение:" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" Margin="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBox Name="PeremenBox" IsReadOnly="True"  FontSize="20" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </WrapPanel>
+            
         </StackPanel>
         <DockPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Height="275">
             <StackPanel Margin="0" DockPanel.Dock="Top">
                 <TextBlock Grid.Row="0"
                            Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
-                           Text="Итоговое представление числа в шестнадцатеричной (двоичной) системе счисления (с клавиатуры)" TextWrapping="Wrap" TextAlignment="Justify" FontSize="16" Margin="10,0" />
-                <TextBox Name="SixTeenBox" FontSize="16" Margin="10,0" Height="30"></TextBox>
+                           Text="Итоговое представление числа в шестнадцатеричной (двоичной) (десятичной) системе счисления (с клавиатуры)" TextWrapping="Wrap" TextAlignment="Justify" FontSize="14" Margin="10,0" />
+                <TextBox Name="UserBox" FontSize="20" Margin="10,0" Height="30"></TextBox>
                 <TextBlock Grid.Row="0"
                            Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
                            Text="Число необходимо вводить по два байта через пробел." TextWrapping="Wrap" TextAlignment="Justify" FontSize="14" Margin="10,5,10,0" />
                 <Button Grid.Row="0" Grid.Column="0" Name="UserDone"
                         Style="{StaticResource MaterialDesignRaisedButton}"
-                        Content="Подтвердить ввод" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,10" Click="UserDone_Click" IsEnabled="False"/>
+                        Content="Подтвердить ввод" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,10,0,0" Click="UserDone_Click" IsEnabled="False"/>
             </StackPanel>
             <StackPanel Margin="0,20,0,60" VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
                 <TextBlock Grid.Row="0"
                            Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
-                           Text="Итоговое представление числа в двоичной системе счисления (правильный)" TextWrapping="Wrap" TextAlignment="Justify" FontSize="16" Margin="10,10,10,0" />
-                <TextBox Name="TwoBox" IsReadOnly="True" FontSize="16" Margin="10,0"></TextBox>
+                           Text="Итоговое представление числа в шестнадцатеричной (двоичной) (десятичной) системе счисления (верный)" TextWrapping="Wrap" TextAlignment="Justify" FontSize="14" Margin="10,10,10,0" />
+                <TextBox Name="TwoBox" IsReadOnly="True" FontSize="20" Margin="10,0"></TextBox>
                 <TextBlock Grid.Row="0"
                            Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
                            Text="Данное поле показывает правильное преобразование после окончания ввода числа." TextWrapping="Wrap" TextAlignment="Justify" FontSize="14" Margin="10,5,10,0" />
             </StackPanel>
         </DockPanel>
     </Grid>
+        </materialDesign:DialogHost>
 </UserControl>
