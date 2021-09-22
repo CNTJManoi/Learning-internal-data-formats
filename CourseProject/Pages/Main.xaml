@@ -1,37 +1,41 @@
 ﻿<UserControl x:Name="userControl" x:Class="CourseProject.Pages.Main"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CourseProject.Pages"
-      mc:Ignorable="d" Width="800" Height="550">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" Width="800" Height="550">
 
     <Grid>
         <StackPanel>
             <DockPanel Height="{Binding ActualHeight, ElementName=userControl, Mode=OneWay}">
                 <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
                     <TextBlock
-                Style="{StaticResource MaterialDesignHeadline3TextBlock}"
-                Text="Приветствуем!" HorizontalAlignment="Center" />
+                        Style="{StaticResource MaterialDesignHeadline3TextBlock}"
+                        Text="Приветствуем!" HorizontalAlignment="Center" />
                     <TextBlock
-                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                Text="Данная программа поможет вам проверить свои знания о внутреннем представлении числовых типов данных языка программирования C#." Margin="10,0" TextWrapping="Wrap" TextAlignment="Justify" />
+                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                        Text="Данная программа поможет вам проверить свои знания о внутреннем представлении числовых типов данных языка программирования C#."
+                        Margin="10,0" TextWrapping="Wrap" TextAlignment="Justify" />
                     <TextBlock
-                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                Text="Доступно два режима - обучение и тестирование." Margin="10,20,10,0" TextWrapping="Wrap" TextAlignment="Justify" />
+                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                        Text="Доступно два режима - обучение и тестирование." Margin="10,20,10,0" TextWrapping="Wrap"
+                        TextAlignment="Justify" />
                     <TextBlock
-                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                Text="В режиме обучения имеется возможность выбрать необходимый Вам тип данных и ввести значение в специальное поле. После ввода значения нажатием левой кнопки мыши по кнопке «Перевести» в поле «Значение» будет предоставлен шестнадцатеричный и двоичный виды числа в оперативной памяти." Margin="10,20,10,0" TextWrapping="Wrap" TextAlignment="Justify" />
+                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                        Text="В режиме обучения имеется возможность выбрать необходимый Вам тип данных и ввести значение в специальное поле. После ввода значения нажатием левой кнопки мыши по кнопке «Перевести» в поле «Значение» будет предоставлен шестнадцатеричный и двоичный виды числа в оперативной памяти."
+                        Margin="10,20,10,0" TextWrapping="Wrap" TextAlignment="Justify" />
                     <TextBlock
-                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                Text="В режиме тестирования необходимо выбрать необходимый вам тип, по которому хотите проверить свои знания, и нажать кнопку «Начать». Вам будет предложено перевести число в заданный тип данных в поле «Значение» и подтвердить ввод нажатием кнопки «Проверить»." Margin="10,20,10,0" TextWrapping="Wrap" TextAlignment="Justify" />
-                    <TextBlock/>
+                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                        Text="В режиме тестирования необходимо выбрать необходимый вам тип, по которому хотите проверить свои знания, и нажать кнопку «Начать». Вам будет предложено перевести число в заданный тип данных в поле «Значение» и подтвердить ввод нажатием кнопки «Проверить»."
+                        Margin="10,20,10,0" TextWrapping="Wrap" TextAlignment="Justify" />
+                    <TextBlock />
                 </StackPanel>
                 <StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                     <TextBlock
                         Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                        Text="Желаем удачи в освоении данной области знаний!" TextWrapping="Wrap" TextAlignment="Justify" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,20" />
+                        Text="Желаем удачи в освоении данной области знаний!" TextWrapping="Wrap"
+                        TextAlignment="Justify" DockPanel.Dock="Bottom" VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center" Margin="0,0,0,20" />
                 </StackPanel>
 
             </DockPanel>
