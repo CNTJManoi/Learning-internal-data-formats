@@ -5,6 +5,13 @@ namespace CourseProject
 {
     internal class Pointer<T> where T : unmanaged
     {
+        private readonly bool _isLogic;
+
+        public Pointer(bool isLogic)
+        {
+            _isLogic = isLogic;
+        }
+
         public static string ByteArrayToString(byte[] ba)
         {
             var hex = "";
@@ -35,7 +42,7 @@ namespace CourseProject
             {
                 unsafe
                 {
-                    T* pt = &num;
+                    var pt = &num;
                     var numberI = 0;
                     var ret = new string[2];
                     byte[] mas = null;
@@ -67,6 +74,15 @@ namespace CourseProject
                         numberI = 16;
                         mas = new byte[numberI];
                         for (var i = 0; i < numberI; i++) mas[i] = Convert.ToByte(Marshal.ReadByte((IntPtr) pt, i));
+                        if (!_isLogic)
+                        {
+                            ret[0] = ByteArrayToString(mas);
+                            var decBin = "";
+                            for (var i = 0; i < numberI; i++) decBin += BytetoBinary(mas[i]) + " ";
+                            ret[1] = decBin;
+                            return ret;
+                        }
+
                         ret[0] = ByteArrayToStringDecimal(mas);
                         for (var i = 1; i <= 4; i++)
                         for (var j = i * 4 - 1; j >= i * 4 - 4; j--)
@@ -75,12 +91,17 @@ namespace CourseProject
                         return ret;
                     }
 
-                    for (var i = 0; i < numberI; i++) mas[i] = Convert.ToByte(Marshal.ReadByte((IntPtr) pt, i));
+                    for (var i = 0; i < numberI; i++)
+                        if (mas != null)
+                            mas[i] = Convert.ToByte(Marshal.ReadByte((IntPtr) pt, i));
 
                     ret[0] = ByteArrayToString(mas);
                     var tBin = "";
-                    for (var i = 0; i < numberI; i++) tBin += BytetoBinary(mas[i]) + " ";
-
+                    for (var i = 0; i < numberI; i++)
+                        if (mas != null)
+                            tBin += BytetoBinary(mas[i]) + " ";
+                    ret[1] = tBin;
+                    if (!_isLogic) return ret;
                     var hexDone = "";
                     var binaryDone = "";
                     var elements = ret[0].Split(' ');

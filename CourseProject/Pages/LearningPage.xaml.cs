@@ -19,12 +19,30 @@ namespace CourseProject.Pages
             string peremen;
             if (Peremen.Text == "")
             {
-                dialogText.Text = "Укажите число!";
-                dialog.IsOpen = true;
+                DialogText.Text = "Укажите число!";
+                Dialog.IsOpen = true;
                 return;
             }
 
-            peremen = Peremen.Text;
+            peremen = Peremen.Text.Replace('.', ',');
+            try
+            {
+                decimal.Parse(peremen);
+            }
+            catch
+            {
+                DialogText.Text = "Допущены ошибки при вводе числа!";
+                Dialog.IsOpen = true;
+                return;
+            }
+
+            if (TypePeremen.SelectedIndex == -1)
+            {
+                DialogText.Text = "Выберите численный тип!";
+                Dialog.IsOpen = true;
+                return;
+            }
+
             var answer = new string[2];
             if (TypePeremen.SelectedIndex == 0)
             {
@@ -35,18 +53,18 @@ namespace CourseProject.Pages
                 }
                 catch (OverflowException)
                 {
-                    dialogText.Text = "Число должно быть в диапазоне от " + sbyte.MinValue + " до " + sbyte.MaxValue;
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число должно быть в диапазоне от " + sbyte.MinValue + " до " + sbyte.MaxValue;
+                    Dialog.IsOpen = true;
                     return;
                 }
                 catch
                 {
-                    dialogText.Text = "Число введено с ошибками!";
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число введено с ошибками!";
+                    Dialog.IsOpen = true;
                     return;
                 }
 
-                var p = new Pointer<sbyte>();
+                var p = new Pointer<sbyte>((bool) ModeLearn.IsChecked);
                 answer = p.Сheck(z);
             }
             else if (TypePeremen.SelectedIndex == 1)
@@ -58,18 +76,18 @@ namespace CourseProject.Pages
                 }
                 catch (OverflowException)
                 {
-                    dialogText.Text = "Число должно быть в диапазоне от " + byte.MinValue + " до " + byte.MaxValue;
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число должно быть в диапазоне от " + byte.MinValue + " до " + byte.MaxValue;
+                    Dialog.IsOpen = true;
                     return;
                 }
                 catch
                 {
-                    dialogText.Text = "Число введено с ошибками!";
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число введено с ошибками!";
+                    Dialog.IsOpen = true;
                     return;
                 }
 
-                var p = new Pointer<byte>();
+                var p = new Pointer<byte>((bool) ModeLearn.IsChecked);
                 answer = p.Сheck(z);
             }
             else if (TypePeremen.SelectedIndex == 2)
@@ -81,18 +99,18 @@ namespace CourseProject.Pages
                 }
                 catch (OverflowException)
                 {
-                    dialogText.Text = "Число должно быть в диапазоне от " + short.MinValue + " до " + short.MaxValue;
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число должно быть в диапазоне от " + short.MinValue + " до " + short.MaxValue;
+                    Dialog.IsOpen = true;
                     return;
                 }
                 catch
                 {
-                    dialogText.Text = "Число введено с ошибками!";
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число введено с ошибками!";
+                    Dialog.IsOpen = true;
                     return;
                 }
 
-                var p = new Pointer<short>();
+                var p = new Pointer<short>((bool) ModeLearn.IsChecked);
                 answer = p.Сheck(z);
             }
             else if (TypePeremen.SelectedIndex == 3)
@@ -104,18 +122,18 @@ namespace CourseProject.Pages
                 }
                 catch (OverflowException)
                 {
-                    dialogText.Text = "Число должно быть в диапазоне от " + ushort.MinValue + " до " + ushort.MaxValue;
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число должно быть в диапазоне от " + ushort.MinValue + " до " + ushort.MaxValue;
+                    Dialog.IsOpen = true;
                     return;
                 }
                 catch
                 {
-                    dialogText.Text = "Число введено с ошибками!";
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число введено с ошибками!";
+                    Dialog.IsOpen = true;
                     return;
                 }
 
-                var p = new Pointer<ushort>();
+                var p = new Pointer<ushort>((bool) ModeLearn.IsChecked);
                 answer = p.Сheck(z);
             }
             else if (TypePeremen.SelectedIndex == 4)
@@ -127,18 +145,18 @@ namespace CourseProject.Pages
                 }
                 catch (OverflowException)
                 {
-                    dialogText.Text = "Число должно быть в диапазоне от " + int.MinValue + " до " + int.MaxValue;
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число должно быть в диапазоне от " + int.MinValue + " до " + int.MaxValue;
+                    Dialog.IsOpen = true;
                     return;
                 }
                 catch
                 {
-                    dialogText.Text = "Число введено с ошибками!";
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число введено с ошибками!";
+                    Dialog.IsOpen = true;
                     return;
                 }
 
-                var p = new Pointer<int>();
+                var p = new Pointer<int>((bool) ModeLearn.IsChecked);
                 answer = p.Сheck(z);
             }
             else if (TypePeremen.SelectedIndex == 5)
@@ -150,18 +168,18 @@ namespace CourseProject.Pages
                 }
                 catch (OverflowException)
                 {
-                    dialogText.Text = "Число должно быть в диапазоне от " + uint.MinValue + " до " + uint.MaxValue;
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число должно быть в диапазоне от " + uint.MinValue + " до " + uint.MaxValue;
+                    Dialog.IsOpen = true;
                     return;
                 }
                 catch
                 {
-                    dialogText.Text = "Число введено с ошибками!";
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число введено с ошибками!";
+                    Dialog.IsOpen = true;
                     return;
                 }
 
-                var p = new Pointer<uint>();
+                var p = new Pointer<uint>((bool) ModeLearn.IsChecked);
                 answer = p.Сheck(z);
             }
             else if (TypePeremen.SelectedIndex == 6)
@@ -173,18 +191,18 @@ namespace CourseProject.Pages
                 }
                 catch (OverflowException)
                 {
-                    dialogText.Text = "Число должно быть в диапазоне от " + long.MinValue + " до " + long.MaxValue;
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число должно быть в диапазоне от " + long.MinValue + " до " + long.MaxValue;
+                    Dialog.IsOpen = true;
                     return;
                 }
                 catch
                 {
-                    dialogText.Text = "Число введено с ошибками!";
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число введено с ошибками!";
+                    Dialog.IsOpen = true;
                     return;
                 }
 
-                var p = new Pointer<long>();
+                var p = new Pointer<long>((bool) ModeLearn.IsChecked);
                 answer = p.Сheck(z);
             }
             else if (TypePeremen.SelectedIndex == 7)
@@ -196,18 +214,18 @@ namespace CourseProject.Pages
                 }
                 catch (OverflowException)
                 {
-                    dialogText.Text = "Число должно быть в диапазоне от " + ulong.MinValue + " до " + ulong.MaxValue;
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число должно быть в диапазоне от " + ulong.MinValue + " до " + ulong.MaxValue;
+                    Dialog.IsOpen = true;
                     return;
                 }
                 catch
                 {
-                    dialogText.Text = "Число введено с ошибками!";
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число введено с ошибками!";
+                    Dialog.IsOpen = true;
                     return;
                 }
 
-                var p = new Pointer<ulong>();
+                var p = new Pointer<ulong>((bool) ModeLearn.IsChecked);
                 answer = p.Сheck(z);
             }
             else if (TypePeremen.SelectedIndex == 8)
@@ -219,18 +237,18 @@ namespace CourseProject.Pages
                 }
                 catch (OverflowException)
                 {
-                    dialogText.Text = "Число должно быть в диапазоне от " + float.MinValue + " до " + float.MaxValue;
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число должно быть в диапазоне от " + float.MinValue + " до " + float.MaxValue;
+                    Dialog.IsOpen = true;
                     return;
                 }
                 catch
                 {
-                    dialogText.Text = "Число введено с ошибками!";
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число введено с ошибками!";
+                    Dialog.IsOpen = true;
                     return;
                 }
 
-                var p = new Pointer<float>();
+                var p = new Pointer<float>((bool) ModeLearn.IsChecked);
                 answer = p.Сheck(z);
             }
             else if (TypePeremen.SelectedIndex == 9)
@@ -242,18 +260,18 @@ namespace CourseProject.Pages
                 }
                 catch (OverflowException)
                 {
-                    dialogText.Text = "Число должно быть в диапазоне от " + double.MinValue + " до " + double.MaxValue;
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число должно быть в диапазоне от " + double.MinValue + " до " + double.MaxValue;
+                    Dialog.IsOpen = true;
                     return;
                 }
                 catch
                 {
-                    dialogText.Text = "Число введено с ошибками!";
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число введено с ошибками!";
+                    Dialog.IsOpen = true;
                     return;
                 }
 
-                var p = new Pointer<double>();
+                var p = new Pointer<double>((bool) ModeLearn.IsChecked);
                 answer = p.Сheck(z);
             }
             else if (TypePeremen.SelectedIndex == 10)
@@ -265,26 +283,26 @@ namespace CourseProject.Pages
                 }
                 catch (OverflowException)
                 {
-                    dialogText.Text = "Число должно быть в диапазоне от " + decimal.MinValue + " до " +
+                    DialogText.Text = "Число должно быть в диапазоне от " + decimal.MinValue + " до " +
                                       decimal.MaxValue;
-                    dialog.IsOpen = true;
+                    Dialog.IsOpen = true;
                     return;
                 }
                 catch
                 {
-                    dialogText.Text = "Число введено с ошибками!";
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Число введено с ошибками!";
+                    Dialog.IsOpen = true;
                     return;
                 }
 
-                var p = new Pointer<decimal>();
+                var p = new Pointer<decimal>((bool) ModeLearn.IsChecked);
                 answer = p.Сheck(z);
             }
 
             if (answer == null)
             {
-                dialogText.Text = "Произошла неизвестная ошибка!";
-                dialog.IsOpen = true;
+                DialogText.Text = "Произошла неизвестная ошибка!";
+                Dialog.IsOpen = true;
                 return;
             }
 

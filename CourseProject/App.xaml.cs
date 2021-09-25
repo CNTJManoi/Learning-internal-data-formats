@@ -14,4 +14,5 @@ namespace CourseProject
     public partial class App : Application
     {
     }
+
 }

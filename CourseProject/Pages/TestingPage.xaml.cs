@@ -10,8 +10,8 @@ namespace CourseProject.Pages
     /// </summary>
     public partial class TestingPage : UserControl
     {
-        private Random _r = new Random();
-        private DispatcherTimer _timer;
+        private readonly Random _r = new Random();
+        private readonly DispatcherTimer _timer;
         private int intervalMin, intervalMax;
         private byte Mode;
         private string Number;
@@ -55,8 +55,8 @@ namespace CourseProject.Pages
                     TypePeremBox.SelectedIndex == -1 ||
                     ParametersBox.SelectedIndex == -1)
                 {
-                    dialogText.Text = "Выберите все настраиваемые пункты";
-                    dialog.IsOpen = true;
+                    DialogText.Text = "Выберите все настраиваемые пункты";
+                    Dialog.IsOpen = true;
                     return;
                 }
 
@@ -137,7 +137,7 @@ namespace CourseProject.Pages
                 sbyte z;
                 z = sbyte.Parse(peremen);
 
-                var p = new Pointer<sbyte>();
+                var p = new Pointer<sbyte>(false);
                 answer = p.Сheck(z);
             }
             else if (typePerem == 1)
@@ -145,7 +145,7 @@ namespace CourseProject.Pages
                 byte z;
                 z = byte.Parse(peremen);
 
-                var p = new Pointer<byte>();
+                var p = new Pointer<byte>(false);
                 answer = p.Сheck(z);
             }
             else if (typePerem == 2)
@@ -153,7 +153,7 @@ namespace CourseProject.Pages
                 short z;
                 z = short.Parse(peremen);
 
-                var p = new Pointer<short>();
+                var p = new Pointer<short>(false);
                 answer = p.Сheck(z);
             }
             else if (typePerem == 3)
@@ -161,7 +161,7 @@ namespace CourseProject.Pages
                 ushort z;
                 z = ushort.Parse(peremen);
 
-                var p = new Pointer<ushort>();
+                var p = new Pointer<ushort>(false);
                 answer = p.Сheck(z);
             }
             else if (typePerem == 4)
@@ -169,7 +169,7 @@ namespace CourseProject.Pages
                 int z;
                 z = int.Parse(peremen);
 
-                var p = new Pointer<int>();
+                var p = new Pointer<int>(false);
                 answer = p.Сheck(z);
             }
             else if (typePerem == 5)
@@ -177,7 +177,7 @@ namespace CourseProject.Pages
                 uint z;
                 z = uint.Parse(peremen);
 
-                var p = new Pointer<uint>();
+                var p = new Pointer<uint>(false);
                 answer = p.Сheck(z);
             }
             else if (typePerem == 6)
@@ -185,7 +185,7 @@ namespace CourseProject.Pages
                 long z;
                 z = long.Parse(peremen);
 
-                var p = new Pointer<long>();
+                var p = new Pointer<long>(false);
                 answer = p.Сheck(z);
             }
             else if (typePerem == 7)
@@ -193,7 +193,7 @@ namespace CourseProject.Pages
                 ulong z;
                 z = ulong.Parse(peremen);
 
-                var p = new Pointer<ulong>();
+                var p = new Pointer<ulong>(false);
                 answer = p.Сheck(z);
             }
             else if (typePerem == 8)
@@ -201,14 +201,14 @@ namespace CourseProject.Pages
                 float z;
                 z = float.Parse(peremen);
 
-                var p = new Pointer<float>();
+                var p = new Pointer<float>(false);
                 answer = p.Сheck(z);
             }
             else if (typePerem == 9)
             {
                 double z;
                 z = double.Parse(peremen);
-                var p = new Pointer<double>();
+                var p = new Pointer<double>(false);
                 answer = p.Сheck(z);
             }
             else if (typePerem == 10)
@@ -216,7 +216,7 @@ namespace CourseProject.Pages
                 decimal z;
                 z = decimal.Parse(peremen);
 
-                var p = new Pointer<decimal>();
+                var p = new Pointer<decimal>(false);
                 answer = p.Сheck(z);
             }
 
@@ -259,8 +259,8 @@ namespace CourseProject.Pages
             }
             else
             {
-                dialogText.Text = "Время закончилось!";
-                dialog.IsOpen = true;
+                DialogText.Text = "Время закончилось!";
+                Dialog.IsOpen = true;
                 _timer.Stop();
                 TwoBox.Text = sixTeenPeremens;
                 BeginButton.Content = "Начать тестирование";
@@ -270,6 +270,13 @@ namespace CourseProject.Pages
 
         private void UserDone_Click(object sender, RoutedEventArgs e)
         {
+            if (UserBox.Text == "")
+            {
+                DialogText.Text = "Вы не ввели результат!";
+                Dialog.IsOpen = true;
+                return;
+            }
+
             var result = UserBox.Text.Replace(" ", string.Empty);
             if (result == sixTeenPeremens.Replace(" ", string.Empty) ||
                 result == TwoPeremens.Replace(" ", string.Empty) && TypeGame == 1)
@@ -284,8 +291,8 @@ namespace CourseProject.Pages
             }
             else
             {
-                dialogText.Text = "Значение введено неверно!";
-                dialog.IsOpen = true;
+                DialogText.Text = "Значение введено неверно!";
+                Dialog.IsOpen = true;
                 if (Mode == 0 || Mode == 2)
                 {
                     if (TypeGame == 0) TwoBox.Text = sixTeenPeremens;
@@ -299,8 +306,8 @@ namespace CourseProject.Pages
 
             if (Mode == 0)
             {
-                dialogText.Text = "Значение введено верно!";
-                dialog.IsOpen = true;
+                DialogText.Text = "Значение введено верно!";
+                Dialog.IsOpen = true;
                 BeginButton.Content = "Начать тестирование";
                 UserDone.IsEnabled = false;
                 if (TypeGame == 0) TwoBox.Text = sixTeenPeremens;

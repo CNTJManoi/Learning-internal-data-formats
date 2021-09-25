@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="CourseProject.Pages.PointerPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Width="800" Height="550">
+    <Grid>
+        <StackPanel>
+            <TextBlock
+                Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+                Text="Краткая инструкция по указателям" HorizontalAlignment="Center" />
+            <TextBlock
+                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                Text="Указатель - это переменная, содержащая в себе адрес памяти, в которой содержится переменная какого-либо типа."
+                Margin="10,0" TextWrapping="Wrap" TextAlignment="Justify" />
+            <TextBlock
+                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                Text="Алгоритм по чтению содержимого численного формата:"
+                Margin="10,0" TextWrapping="Wrap" TextAlignment="Justify" />
+            <TextBlock
+                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                Text="1) Обьявить необходимую переменную (неуправляемого типа);&#x0a;2) Обьявить указатель вида type *name;"
+                Margin="10,0" TextWrapping="Wrap" TextAlignment="Justify" />
+            <TextBlock
+                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                Margin="10,0" TextWrapping="Wrap" TextAlignment="Justify">
+                <TextBlock.Text>3) Установить указатель на переменную с помощью символа &amp; (name = &amp;value);</TextBlock.Text>
+            </TextBlock>
+            <TextBlock
+                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                Text="4) Прочитать необходимое количество байтов с помощью класса Marshal метода ReadBytes и цикла for;"
+                Margin="10,0" TextWrapping="Wrap" TextAlignment="Justify" />
+            <TextBlock
+                Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                Text="5) Перевести физический вид в логический перевернув строку байтов."
+                Margin="10,0" TextWrapping="Wrap" TextAlignment="Justify" />
+            <Image Source="/CourseProject;component/Resources/ExampleCode.png" Margin="10,0" Height="250" />
+        </StackPanel>
+    </Grid>
+</UserControl>

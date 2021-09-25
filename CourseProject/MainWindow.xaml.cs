@@ -35,6 +35,7 @@ namespace CourseProject
             else if (name == "TestButton" && Transitioner.SelectedIndex != 2) { Transitioner.SelectedIndex = 2; MenuToggleButton.IsChecked = !MenuToggleButton.IsChecked; }
             else if (name == "HelpButton" && Transitioner.SelectedIndex != 3) { Transitioner.SelectedIndex = 3; MenuToggleButton.IsChecked = !MenuToggleButton.IsChecked; }
             else if (name == "AboutButton" && Transitioner.SelectedIndex != 4) { Transitioner.SelectedIndex = 4; MenuToggleButton.IsChecked = !MenuToggleButton.IsChecked; }
+            else if (name == "PointerButton" && Transitioner.SelectedIndex != 5) { Transitioner.SelectedIndex = 5; MenuToggleButton.IsChecked = !MenuToggleButton.IsChecked; }
         }
     }
 }
