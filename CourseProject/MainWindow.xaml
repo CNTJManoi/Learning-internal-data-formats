@@ -6,7 +6,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1000" MinWidth="1000" MinHeight="700">
+        Title="Числовые форматы данных"
+        Height="700" Width="1000" MinWidth="1000" MinHeight="700" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <materialDesign:MathConverter x:Key="MathConverter" />
     </Window.Resources>
@@ -34,18 +35,47 @@
                 <materialDesign:Transitioner x:Name="Transitioner" SelectedIndex="0"
                                              Height="{Binding ActualHeight, ConverterParameter=-100, Converter={StaticResource MathConverter}, ElementName=Window, Mode=OneWay}"
                                              VerticalAlignment="Top">
-                    <pg:Main x:Name="Main" Width="Auto"
-                             Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromLeft" Duration="0:0:0.4" />
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.4" OffsetTime="0:0:0.9" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+                        <materialDesign:TransitionerSlide.ForwardWipe>
+                            <materialDesign:SlideWipe Duration="0:0:0.4" />
+                        </materialDesign:TransitionerSlide.ForwardWipe>
+                        <pg:Main x:Name="Main" Width="Auto"
+                                 Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                    </materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide>
                     <pg:LearningPage x:Name="LearnPage" Width="Auto"
                                      Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
-                    <pg:TestingPage x:Name="TestPage" Width="Auto"
-                                    Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
-                    <pg:HelpPage x:Name="HelpPage" Width="Auto"
-                                 Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                    </materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.ForwardWipe>
+                            <materialDesign:SlideWipe Duration="0:0:0.4" />
+                        </materialDesign:TransitionerSlide.ForwardWipe>
+                        <pg:TestingPage x:Name="TestPage" Width="Auto"
+                                        Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                    </materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromLeft" Duration="0:0:0.4" />
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.4" OffsetTime="0:0:0.9" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+                        <pg:HelpPage x:Name="HelpPage" Width="Auto"
+                                     Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                    </materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide>
                     <pg:AboutPage x:Name="AboutPage" Width="Auto"
                                   Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
-                    <pg:PointerPage x:Name="PointerPage" Width="Auto"
-                                    Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                    </materialDesign:TransitionerSlide>
+                    <materialDesign:TransitionerSlide>
+                        <materialDesign:TransitionerSlide.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.4" OffsetTime="0:0:0.9" />
+                        </materialDesign:TransitionerSlide.OpeningEffects>
+                            <pg:PointerPage x:Name="PointerPage" Width="Auto"
+                                        Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                    </materialDesign:TransitionerSlide>
                 </materialDesign:Transitioner>
             </StackPanel>
             <materialDesign:DrawerHost.LeftDrawerContent>
@@ -137,7 +167,7 @@
                     </StackPanel>
                     <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom" HorizontalAlignment="Center"
                                 Margin="0,0,0,10">
-                        <TextBlock TextWrapping="Wrap" Text="Версия 0.5-Beta" Foreground="#CC424242"
+                        <TextBlock TextWrapping="Wrap" Text="Версия 1.0 Release" Foreground="#CC424242"
                                    VerticalAlignment="Bottom" HorizontalAlignment="Center" />
                     </StackPanel>
                 </DockPanel>
