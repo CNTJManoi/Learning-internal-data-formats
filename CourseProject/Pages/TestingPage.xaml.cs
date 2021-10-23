@@ -12,16 +12,16 @@ namespace CourseProject.Pages
     {
         private readonly Random _r = new Random();
         private readonly DispatcherTimer _timer;
-        private int intervalMin, intervalMax;
-        private byte Mode;
-        private string Number;
-        private uint Score;
-        private string sixTeenPeremens;
-        private uint Time;
-        private string TwoPeremens;
-        private byte TypeGame;
+        private int _intervalMin, _intervalMax;
+        private byte _mode;
+        private string _number;
+        private uint _score;
+        private string _sixTeenPeremens;
+        private uint _time;
+        private string _twoPeremens;
+        private byte _typeGame;
 
-        private byte typePerem;
+        private byte _typePerem;
 
         public TestingPage()
         {
@@ -63,56 +63,56 @@ namespace CourseProject.Pages
                 switch (DifBox.SelectedIndex)
                 {
                     case 0:
-                        intervalMin = -100;
-                        intervalMax = 100;
+                        _intervalMin = -100;
+                        _intervalMax = 100;
                         break;
                     case 1:
-                        intervalMin = -1000000;
-                        intervalMax = 1000000;
+                        _intervalMin = -1000000;
+                        _intervalMax = 1000000;
                         break;
                     case 2:
-                        intervalMin = int.MinValue;
-                        intervalMax = int.MaxValue;
+                        _intervalMin = int.MinValue;
+                        _intervalMax = int.MaxValue;
                         break;
                 }
 
                 UserBox.Text = "";
                 TwoBox.Text = "";
-                typePerem = byte.Parse(TypePeremBox.SelectedIndex.ToString());
-                Mode = (byte) ModeBox.SelectedIndex;
-                if (Mode == 1)
+                _typePerem = byte.Parse(TypePeremBox.SelectedIndex.ToString());
+                _mode = (byte) ModeBox.SelectedIndex;
+                if (_mode == 1)
                     switch (TimeBox.SelectedIndex)
                     {
                         case 0:
-                            Time = 30;
+                            _time = 30;
                             break;
                         case 1:
-                            Time = 60;
+                            _time = 60;
                             break;
                         case 2:
-                            Time = 120;
+                            _time = 120;
                             break;
                         case 3:
-                            Time = 180;
+                            _time = 180;
                             break;
                         case 4:
-                            Time = 300;
+                            _time = 300;
                             break;
                         case 5:
-                            Time = 600;
+                            _time = 600;
                             break;
                         case 6:
-                            Time = 1800;
+                            _time = 1800;
                             break;
                         case 7:
-                            Time = 6000;
+                            _time = 6000;
                             break;
                     }
 
                 BeginButton.Content = "Закончить";
                 UserDone.IsEnabled = true;
-                Score = 0;
-                TypeGame = (byte) ParametersBox.SelectedIndex;
+                _score = 0;
+                _typeGame = (byte) ParametersBox.SelectedIndex;
                 PlayGame();
             }
             else
@@ -121,8 +121,7 @@ namespace CourseProject.Pages
                 UserDone.IsEnabled = false;
                 _timer.Stop();
                 TimeWindow.Opacity = 0;
-                if (TypeGame == 1) TwoBox.Text = sixTeenPeremens;
-                else TwoBox.Text = Number;
+                TwoBox.Text = _typeGame == 1 ? _sixTeenPeremens : _number;
                 ScoreBlock.Text = "0";
             }
         }
@@ -130,16 +129,15 @@ namespace CourseProject.Pages
         private void PlayGame()
         {
             var answer = new string[2];
-            ScoreBlock.Text = Score.ToString();
-            string peremen = "";
-            if(typePerem != 8 && typePerem != 9 && typePerem != 10) peremen = _r.Next(intervalMin, intervalMax).ToString();
+            ScoreBlock.Text = _score.ToString();
+            var peremen = "";
+            if (_typePerem != 8 && _typePerem != 9 && _typePerem != 10)
+                peremen = _r.Next(_intervalMin, _intervalMax).ToString();
             else
-            {
-                peremen = Math.Round((intervalMin + _r.NextDouble() * (intervalMax - intervalMin)),2).ToString();
-            }
+                peremen = Math.Round(_intervalMin + _r.NextDouble() * (_intervalMax - _intervalMin), 2).ToString();
 
-            Number = peremen;
-            if (typePerem == 0)
+            _number = peremen;
+            if (_typePerem == 0)
             {
                 sbyte z;
                 z = sbyte.Parse(peremen);
@@ -147,7 +145,7 @@ namespace CourseProject.Pages
                 var p = new Pointer<sbyte>(true);
                 answer = p.Сheck(z);
             }
-            else if (typePerem == 1)
+            else if (_typePerem == 1)
             {
                 byte z;
                 z = byte.Parse(peremen);
@@ -155,7 +153,7 @@ namespace CourseProject.Pages
                 var p = new Pointer<byte>(true);
                 answer = p.Сheck(z);
             }
-            else if (typePerem == 2)
+            else if (_typePerem == 2)
             {
                 short z;
                 z = short.Parse(peremen);
@@ -163,7 +161,7 @@ namespace CourseProject.Pages
                 var p = new Pointer<short>(true);
                 answer = p.Сheck(z);
             }
-            else if (typePerem == 3)
+            else if (_typePerem == 3)
             {
                 ushort z;
                 z = ushort.Parse(peremen);
@@ -171,7 +169,7 @@ namespace CourseProject.Pages
                 var p = new Pointer<ushort>(true);
                 answer = p.Сheck(z);
             }
-            else if (typePerem == 4)
+            else if (_typePerem == 4)
             {
                 int z;
                 z = int.Parse(peremen);
@@ -179,7 +177,7 @@ namespace CourseProject.Pages
                 var p = new Pointer<int>(true);
                 answer = p.Сheck(z);
             }
-            else if (typePerem == 5)
+            else if (_typePerem == 5)
             {
                 uint z;
                 z = uint.Parse(peremen);
@@ -187,7 +185,7 @@ namespace CourseProject.Pages
                 var p = new Pointer<uint>(true);
                 answer = p.Сheck(z);
             }
-            else if (typePerem == 6)
+            else if (_typePerem == 6)
             {
                 long z;
                 z = long.Parse(peremen);
@@ -195,7 +193,7 @@ namespace CourseProject.Pages
                 var p = new Pointer<long>(true);
                 answer = p.Сheck(z);
             }
-            else if (typePerem == 7)
+            else if (_typePerem == 7)
             {
                 ulong z;
                 z = ulong.Parse(peremen);
@@ -203,7 +201,7 @@ namespace CourseProject.Pages
                 var p = new Pointer<ulong>(true);
                 answer = p.Сheck(z);
             }
-            else if (typePerem == 8)
+            else if (_typePerem == 8)
             {
                 float z;
                 z = float.Parse(peremen);
@@ -211,14 +209,14 @@ namespace CourseProject.Pages
                 var p = new Pointer<float>(true);
                 answer = p.Сheck(z);
             }
-            else if (typePerem == 9)
+            else if (_typePerem == 9)
             {
                 double z;
                 z = double.Parse(peremen);
                 var p = new Pointer<double>(true);
                 answer = p.Сheck(z);
             }
-            else if (typePerem == 10)
+            else if (_typePerem == 10)
             {
                 decimal z;
                 z = decimal.Parse(peremen);
@@ -227,15 +225,15 @@ namespace CourseProject.Pages
                 answer = p.Сheck(z);
             }
 
-            sixTeenPeremens = answer[0].Trim();
-            TwoPeremens = answer[1].Trim();
-            PeremenBox.Text = TypeGame == 0 ? sixTeenPeremens : peremen;
-            if (Mode == 1)
+            _sixTeenPeremens = answer[0].Trim();
+            _twoPeremens = answer[1].Trim();
+            PeremenBox.Text = _typeGame == 0 ? _sixTeenPeremens : peremen;
+            if (_mode == 1)
             {
                 _timer.Start();
                 TimeWindow.Opacity = 1;
-                var minutes = Time / 60;
-                var seconds = Time - 60 * minutes;
+                var minutes = _time / 60;
+                var seconds = _time - 60 * minutes;
                 string sec = "", min = "";
                 if (seconds < 10) sec = "0" + seconds;
                 else sec = seconds.ToString();
@@ -252,11 +250,11 @@ namespace CourseProject.Pages
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (Time > 0)
+            if (_time > 0)
             {
-                Time -= 1;
-                var minutes = Time / 60;
-                var seconds = Time - 60 * minutes;
+                _time -= 1;
+                var minutes = _time / 60;
+                var seconds = _time - 60 * minutes;
                 string sec = "", min = "";
                 if (seconds < 10) sec = "0" + seconds;
                 else sec = seconds.ToString();
@@ -269,7 +267,7 @@ namespace CourseProject.Pages
                 DialogText.Text = "Время закончилось!";
                 Dialog.IsOpen = true;
                 _timer.Stop();
-                TwoBox.Text = sixTeenPeremens;
+                TwoBox.Text = _sixTeenPeremens;
                 BeginButton.Content = "Начать тестирование";
                 UserDone.IsEnabled = false;
             }
@@ -285,25 +283,25 @@ namespace CourseProject.Pages
             }
 
             var result = UserBox.Text.Replace(" ", string.Empty);
-            if (result == sixTeenPeremens.Replace(" ", string.Empty) ||
-                result == TwoPeremens.Replace(" ", string.Empty) && TypeGame == 1)
+            if (result == _sixTeenPeremens.Replace(" ", string.Empty) ||
+                result == _twoPeremens.Replace(" ", string.Empty) && _typeGame == 1)
             {
-                Score += 1;
-                if (Mode != 0) PlayGame();
+                _score += 1;
+                if (_mode != 0) PlayGame();
             }
-            else if (result == Number.Replace(" ", string.Empty) && TypeGame == 0)
+            else if (result == _number.Replace(" ", string.Empty) && _typeGame == 0)
             {
-                Score += 1;
-                if (Mode != 0) PlayGame();
+                _score += 1;
+                if (_mode != 0) PlayGame();
             }
             else
             {
                 DialogText.Text = "Значение введено неверно!";
                 Dialog.IsOpen = true;
-                if (Mode == 0 || Mode == 2)
+                if (_mode == 0 || _mode == 2)
                 {
-                    if (TypeGame == 1) TwoBox.Text = sixTeenPeremens;
-                    else TwoBox.Text = Number;
+                    if (_typeGame == 1) TwoBox.Text = _sixTeenPeremens;
+                    else TwoBox.Text = _number;
                     BeginButton.Content = "Начать тестирование";
                     UserDone.IsEnabled = false;
                 }
@@ -311,18 +309,18 @@ namespace CourseProject.Pages
                 return;
             }
 
-            if (Mode == 0)
+            if (_mode == 0)
             {
                 DialogText.Text = "Значение введено верно!";
                 Dialog.IsOpen = true;
                 BeginButton.Content = "Начать тестирование";
                 UserDone.IsEnabled = false;
-                if (TypeGame == 1) TwoBox.Text = sixTeenPeremens;
-                else TwoBox.Text = Number;
+                if (_typeGame == 1) TwoBox.Text = _sixTeenPeremens;
+                else TwoBox.Text = _number;
             }
 
-            if (TypeGame == 1) TwoBox.Text = sixTeenPeremens;
-            else TwoBox.Text = Number;
+            if (_typeGame == 1) TwoBox.Text = _sixTeenPeremens;
+            else TwoBox.Text = _number;
         }
     }
 }

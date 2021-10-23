@@ -38,7 +38,8 @@
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
                             <materialDesign:TransitionEffect Kind="SlideInFromLeft" Duration="0:0:0.4" />
-                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.4" OffsetTime="0:0:0.9" />
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.4"
+                                                             OffsetTime="0:0:0.9" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
                         <materialDesign:TransitionerSlide.ForwardWipe>
                             <materialDesign:SlideWipe Duration="0:0:0.4" />
@@ -47,8 +48,8 @@
                                  Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
                     </materialDesign:TransitionerSlide>
                     <materialDesign:TransitionerSlide>
-                    <pg:LearningPage x:Name="LearnPage" Width="Auto"
-                                     Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                        <pg:LearningPage x:Name="LearnPage" Width="Auto"
+                                         Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
                     </materialDesign:TransitionerSlide>
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.ForwardWipe>
@@ -60,20 +61,22 @@
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
                             <materialDesign:TransitionEffect Kind="SlideInFromLeft" Duration="0:0:0.4" />
-                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.4" OffsetTime="0:0:0.9" />
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.4"
+                                                             OffsetTime="0:0:0.9" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
                         <pg:HelpPage x:Name="HelpPage" Width="Auto"
                                      Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
                     </materialDesign:TransitionerSlide>
                     <materialDesign:TransitionerSlide>
-                    <pg:AboutPage x:Name="AboutPage" Width="Auto"
-                                  Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
+                        <pg:AboutPage x:Name="AboutPage" Width="Auto"
+                                      Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
                     </materialDesign:TransitionerSlide>
                     <materialDesign:TransitionerSlide>
                         <materialDesign:TransitionerSlide.OpeningEffects>
-                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.4" OffsetTime="0:0:0.9" />
+                            <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:0.4"
+                                                             OffsetTime="0:0:0.9" />
                         </materialDesign:TransitionerSlide.OpeningEffects>
-                            <pg:PointerPage x:Name="PointerPage" Width="Auto"
+                        <pg:PointerPage x:Name="PointerPage" Width="Auto"
                                         Height="{Binding ActualHeight, ElementName=Transitioner, Mode=OneWay}" />
                     </materialDesign:TransitionerSlide>
                 </materialDesign:Transitioner>

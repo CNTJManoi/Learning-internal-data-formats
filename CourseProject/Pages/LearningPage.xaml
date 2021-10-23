@@ -13,9 +13,9 @@
                            TextWrapping="Wrap" />
                 <Button
                     Style="{StaticResource MaterialDesignRaisedButton}"
-                        Content="Хорошо" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-                        Margin="30,20,30,30" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
-                        FontSize="16" />
+                    Content="Хорошо" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                    Margin="30,20,30,30" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                    FontSize="16" />
             </StackPanel>
 
 
@@ -81,22 +81,22 @@
                     VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="80" Width="430" />
                 <Button
                     Style="{StaticResource MaterialDesignRaisedButton}"
-                        Content="Перевести" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-                        Margin="0,0,0,8" Click="Button_Click" />
+                    Content="Перевести" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                    Margin="0,0,0,8" Click="Button_Click" />
             </StackPanel>
             <DockPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Height="275">
                 <StackPanel Margin="0,20,0,0" DockPanel.Dock="Top">
                     <TextBlock
                         Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
-                               Text="Итоговое представление числа в шестнадцатеричной системе счисления"
-                               TextWrapping="Wrap" TextAlignment="Justify" FontSize="16" Margin="10,0" />
+                        Text="Итоговое представление числа в шестнадцатеричной системе счисления"
+                        TextWrapping="Wrap" TextAlignment="Justify" FontSize="16" Margin="10,0" />
                     <TextBox Name="SixTeenBox" IsReadOnly="True" FontSize="20" Margin="10,0" />
                 </StackPanel>
                 <StackPanel Margin="0,20,0,80" VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
                     <TextBlock
                         Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
-                               Text="Итоговое представление числа в двоичной системе счисления" TextWrapping="Wrap"
-                               TextAlignment="Justify" FontSize="16" Margin="10,10,10,0" />
+                        Text="Итоговое представление числа в двоичной системе счисления" TextWrapping="Wrap"
+                        TextAlignment="Justify" FontSize="16" Margin="10,10,10,0" />
                     <TextBox Name="TwoBox" IsReadOnly="True" FontSize="20" Margin="10,0" TextWrapping="Wrap" />
                 </StackPanel>
             </DockPanel>

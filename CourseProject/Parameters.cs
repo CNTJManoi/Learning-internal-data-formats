@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CourseProject
+﻿namespace CourseProject
 {
-    static class Parameters
+    internal static class Parameters
     {
-        static public MainWindow mw { get; set; }
+        public static MainWindow Mw { get; set; }
     }
 }
