@@ -67,12 +67,12 @@ namespace CourseProject.Pages
                         _intervalMax = 100;
                         break;
                     case 1:
-                        _intervalMin = -1000000;
-                        _intervalMax = 1000000;
+                        _intervalMin = -10000;
+                        _intervalMax = 10000;
                         break;
                     case 2:
-                        _intervalMin = int.MinValue;
-                        _intervalMax = int.MaxValue;
+                        _intervalMin = -10000000;
+                        _intervalMax = 10000000;
                         break;
                 }
 
@@ -134,97 +134,121 @@ namespace CourseProject.Pages
             if (_typePerem != 8 && _typePerem != 9 && _typePerem != 10)
                 peremen = _r.Next(_intervalMin, _intervalMax).ToString();
             else
-                peremen = Math.Round(_intervalMin + _r.NextDouble() * (_intervalMax - _intervalMin), 2).ToString();
-
-            _number = peremen;
+                peremen = Math.Round(_r.NextDouble() * (_intervalMax - _intervalMin) + _intervalMin, 2).ToString();
+            bool isT = false;
             if (_typePerem == 0)
             {
                 sbyte z;
-                z = sbyte.Parse(peremen);
-
+                while (!sbyte.TryParse(peremen, out z))
+                {
+                    peremen = _r.Next(_intervalMin, _intervalMax).ToString();
+                }
                 var p = new Pointer<sbyte>(true);
                 answer = p.Сheck(z);
             }
             else if (_typePerem == 1)
             {
                 byte z;
-                z = byte.Parse(peremen);
-
+                while (!byte.TryParse(peremen, out z))
+                {
+                    peremen = _r.Next(_intervalMin, _intervalMax).ToString();
+                }
                 var p = new Pointer<byte>(true);
                 answer = p.Сheck(z);
             }
             else if (_typePerem == 2)
             {
                 short z;
-                z = short.Parse(peremen);
-
+                while (!short.TryParse(peremen, out z))
+                {
+                    peremen = _r.Next(_intervalMin, _intervalMax).ToString();
+                }
                 var p = new Pointer<short>(true);
                 answer = p.Сheck(z);
             }
             else if (_typePerem == 3)
             {
                 ushort z;
-                z = ushort.Parse(peremen);
-
+                while (!ushort.TryParse(peremen, out z))
+                {
+                    peremen = _r.Next(_intervalMin, _intervalMax).ToString();
+                }
                 var p = new Pointer<ushort>(true);
                 answer = p.Сheck(z);
             }
             else if (_typePerem == 4)
             {
                 int z;
-                z = int.Parse(peremen);
-
+                while (!int.TryParse(peremen, out z))
+                {
+                    peremen = _r.Next(_intervalMin, _intervalMax).ToString();
+                }
                 var p = new Pointer<int>(true);
                 answer = p.Сheck(z);
             }
             else if (_typePerem == 5)
             {
                 uint z;
-                z = uint.Parse(peremen);
-
+                while (!uint.TryParse(peremen, out z))
+                {
+                    peremen = _r.Next(_intervalMin, _intervalMax).ToString();
+                }
                 var p = new Pointer<uint>(true);
                 answer = p.Сheck(z);
             }
             else if (_typePerem == 6)
             {
                 long z;
-                z = long.Parse(peremen);
-
+                while (!long.TryParse(peremen, out z))
+                {
+                    peremen = _r.Next(_intervalMin, _intervalMax).ToString();
+                }
                 var p = new Pointer<long>(true);
                 answer = p.Сheck(z);
             }
             else if (_typePerem == 7)
             {
                 ulong z;
-                z = ulong.Parse(peremen);
-
+                while (!ulong.TryParse(peremen, out z))
+                {
+                    peremen = _r.Next(_intervalMin, _intervalMax).ToString();
+                }
                 var p = new Pointer<ulong>(true);
                 answer = p.Сheck(z);
             }
             else if (_typePerem == 8)
             {
                 float z;
-                z = float.Parse(peremen);
-
+                while (!float.TryParse(peremen, out z))
+                {
+                    peremen = Math.Round(_r.NextDouble() * (_intervalMax - _intervalMin) + _intervalMin, 2).ToString();
+                }
                 var p = new Pointer<float>(true);
                 answer = p.Сheck(z);
             }
             else if (_typePerem == 9)
             {
                 double z;
-                z = double.Parse(peremen);
+                while (!double.TryParse(peremen, out z))
+                {
+                    peremen = Math.Round(_r.NextDouble() * (_intervalMax - _intervalMin) + _intervalMin, 2).ToString();
+                }
                 var p = new Pointer<double>(true);
                 answer = p.Сheck(z);
             }
             else if (_typePerem == 10)
             {
                 decimal z;
-                z = decimal.Parse(peremen);
+                while (!decimal.TryParse(peremen, out z))
+                {
+                    peremen = Math.Round(_r.NextDouble() * (_intervalMax - _intervalMin) + _intervalMin, 2).ToString();
+                }
 
                 var p = new Pointer<decimal>(true);
                 answer = p.Сheck(z);
             }
 
+            _number = peremen;
             _sixTeenPeremens = answer[0].Trim();
             _twoPeremens = answer[1].Trim();
             PeremenBox.Text = _typeGame == 0 ? _sixTeenPeremens : peremen;

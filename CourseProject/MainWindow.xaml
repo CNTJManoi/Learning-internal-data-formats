@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Числовые форматы данных"
-        Height="700" Width="1000" MinWidth="1000" MinHeight="700" WindowStartupLocation="CenterScreen">
+        Height="700" Width="1000" MinWidth="1000" MinHeight="700" WindowStartupLocation="CenterScreen" Icon="numbers.ico">
     <Window.Resources>
         <materialDesign:MathConverter x:Key="MathConverter" />
     </Window.Resources>
